@@ -1,0 +1,2 @@
+class MThread < ApplicationRecord
+end

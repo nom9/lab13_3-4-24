@@ -1,0 +1,29 @@
+<!-- app/views/pages/index.html.erb -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your API Frontend</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <ul id="userList"></ul>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('http://localhost:3000/users');
+            const data = await response.json();
+            
+            const userList = document.getElementById('userList');
+            data.forEach(user => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `ID: ${user.id}, Username: ${user.username}, Name: ${user.name}`;
+                userList.appendChild(listItem);
+            });
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
